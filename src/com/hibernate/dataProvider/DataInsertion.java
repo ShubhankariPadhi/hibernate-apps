@@ -32,7 +32,7 @@ public class DataInsertion {
 			System.out.println("object saved successfully");
 			TR.commit();
 	        session.close();
-	SF.close();
+	        SF.close();
 	}
 
 
