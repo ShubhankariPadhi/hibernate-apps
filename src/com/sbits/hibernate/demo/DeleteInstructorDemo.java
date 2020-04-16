@@ -29,7 +29,7 @@ public class DeleteInstructorDemo {
 			session.beginTransaction();
 			
 			//get the instructor detail object 
-			int theId=2; 
+			int theId=3; 
 			
 			
 			// Instructor
@@ -41,7 +41,11 @@ public class DeleteInstructorDemo {
 			
 			//now lets delete the instructor detail
 			System.out.println("lets delete the instructor detail"+tempInstructorDetail);
-			session.delete(tempInstructorDetail);
+			
+			//deleted object would be re-saved by cascade  so to break the cascade bidirectional link the single instructuralDetail object
+			tempInstructorDetail.getInstructor().setInstructorDetail(null);
+			
+			session.delete(tempInstructorDetail); // it will delete only instructorDetail not the instructor object as remove type cascade is not applied
 			
 			
 			//commit the transaction
