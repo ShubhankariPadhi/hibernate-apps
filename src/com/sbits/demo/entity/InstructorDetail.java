@@ -1,10 +1,12 @@
 package com.sbits.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +25,23 @@ public class InstructorDetail {
 	@Column(name="hobby")
 	private String hobby;
 	
-
+//step1  new field will be added for bidirectional for class Instructor
 	
-	public InstructorDetail() {}
+	@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	private Instructor instructor;
+	
+	// step2 add getters/setters
+	public Instructor getInstructor() {
+		return instructor;
+	}
 
+
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+	public InstructorDetail() {}
 
 
 	public InstructorDetail(String youtubechannel, String hobby) {
