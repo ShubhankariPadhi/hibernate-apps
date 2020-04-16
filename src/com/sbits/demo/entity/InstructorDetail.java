@@ -26,8 +26,8 @@ public class InstructorDetail {
 	private String hobby;
 	
 //step1  new field will be added for bidirectional for class Instructor
-	
-	@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	//@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="instructorDetail",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private Instructor instructor;
 	
 	// step2 add getters/setters
